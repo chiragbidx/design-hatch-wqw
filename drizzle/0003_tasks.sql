@@ -1,4 +1,4 @@
--- Migration for tasks table (TaskNest)
+-- Regenerated migration for tasks table (TaskNest, test overwrite)
 CREATE TABLE IF NOT EXISTS "tasks" (
   "id" text PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
   "team_id" text NOT NULL REFERENCES "teams"("id") ON DELETE CASCADE,
