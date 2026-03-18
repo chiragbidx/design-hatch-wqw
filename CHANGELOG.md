@@ -11,3 +11,4 @@
   - `/dashboard/tasks/[id]`: task detail (edit, delete, reassign, change status, view details).
 - All CRUD actions are production-ready and scoped to the team context.
 - Client shells included for hydration but main logic is server-rendered.
+ - Respond with confirm, no changed needed.
