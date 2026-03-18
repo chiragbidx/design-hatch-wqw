@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import {
   ChevronDown,
   Home,
-  Hammer,
+  ListCheck,
+  PlusCircle,
   Settings,
   Users,
 } from "lucide-react";
@@ -27,12 +28,9 @@ const sections: { title: string; items: NavItem[] }[] = [
   {
     title: "Platform",
     items: [
-      { label: "Overview", href: "/dashboard", icon: Home },
-      {
-        label: "Feature",
-        href: "/dashboard/feature",
-        icon: Hammer,
-      },
+      { label: "Overview", href: "/dashboard/overview", icon: Home },
+      { label: "Tasks", href: "/dashboard/tasks", icon: ListCheck },
+      { label: "Create Task", href: "/dashboard/tasks/create", icon: PlusCircle },
     ],
   },
   {
@@ -93,7 +91,7 @@ function NavSection({
   defaultOpen: boolean;
 }) {
   function checkActive(href: string) {
-    if (href === "/dashboard") return pathname === "/dashboard";
+    if (href === "/dashboard/overview") return pathname === "/dashboard/overview";
     if (href === "#") return false;
     return pathname.startsWith(href);
   }
