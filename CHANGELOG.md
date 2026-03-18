@@ -1,14 +1,13 @@
 # Changelog
 
-## 2024-06-09 — TaskNest Branding & Dashboard Foundation
+## 2024-06-09 — TaskNest Task CRUD
 
-- Overhauled all landing content in `content/home.ts` to reflect TaskNest branding, value prop, features, and testimonials.
-- Updated `components/layout/navbar.tsx` to use TaskNest for all brand and action labels.
-- Refreshed authentication UI copy (`app/auth/client.tsx` and `app/auth/forgot-password/client.tsx`) to match TaskNest, including headings, descriptions, button labels, and all helpers.
-- Upgraded dashboard shell sidebar (`app/dashboard/layout.tsx` and `components/dashboard/sidebar-nav.tsx`) for TaskNest brand, with platform nav: Overview, Tasks, Create Task.
-- Added minimal, navigable dashboard routes:
-  - `/dashboard/overview` with heading, description, and empty state.
-  - `/dashboard/tasks` with heading, empty state, and "Create Task" CTA.
-  - `/dashboard/tasks/create` with heading, description, and immutable form/warning.
-- Updated dashboard welcome page and empty states to TaskNest-specific copy and actions.
-- Provided minimal client shell files for dashboard routes to keep dashboard fully navigable and production ready.
+- Added `tasks` table to Drizzle schema (`lib/db/schema.ts`), with fields for team, creator, assignee, title, description, status, due date, createdAt, updatedAt.
+- Created matching migration in `drizzle/0003_tasks.sql` and updated migration journal (`drizzle/meta/_journal.json`).
+- Added full server actions for creating, listing, getting, updating, and deleting tasks (`app/dashboard/tasks/actions.tsx`) with Zod validation and full team permission checks.
+- Implemented page and forms for:
+  - `/dashboard/tasks`: task list with links to detail, handles loading and error states.
+  - `/dashboard/tasks/create`: form to create task (title, description, status, assignee, due date).
+  - `/dashboard/tasks/[id]`: task detail (edit, delete, reassign, change status, view details).
+- All CRUD actions are production-ready and scoped to the team context.
+- Client shells included for hydration but main logic is server-rendered.
