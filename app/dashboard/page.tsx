@@ -10,13 +10,6 @@ import { users } from "@/lib/db/schema";
 // Keep auth checks and database reads in this file,
 // then pass prepared props into `client.tsx`.
 
-function getGreeting(): string {
-  const hour = new Date().getHours();
-  if (hour < 12) return "Good morning";
-  if (hour < 18) return "Good afternoon";
-  return "Good evening";
-}
-
 export default async function DashboardPage() {
   const session = await getAuthSession();
   if (!session) redirect("/auth#signin");
@@ -30,9 +23,12 @@ export default async function DashboardPage() {
   const firstName = user?.firstName || "there";
 
   return (
-    <Client
-      greeting={getGreeting()}
-      firstName={firstName}
-    />
+    <div>
+      <h1 className="text-3xl font-bold mb-2">Welcome to TaskNest</h1>
+      <p className="text-lg mb-6 text-muted-foreground">
+        Your command center for organized, collaborative work.
+      </p>
+      <Client greeting="Welcome" firstName={firstName} />
+    </div>
   );
 }
